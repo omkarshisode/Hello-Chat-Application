@@ -14,7 +14,7 @@ class BaseViewController : UIViewController {
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.hidesWhenStopped = true
         return indicator
-    }
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

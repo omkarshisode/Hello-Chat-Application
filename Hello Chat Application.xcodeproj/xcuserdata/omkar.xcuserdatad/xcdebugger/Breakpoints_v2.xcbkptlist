@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "191B625C-AC05-423B-8985-9A32B4807929"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C33CFDD0-C856-43BC-AD20-9227B02D6FB6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hello Chat Application/Controllers/Auth Controllers/LoginViewController .swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "login()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B48861E4-3B54-47CE-BC15-901048E3A598"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hello Chat Application/Controllers/Auth Controllers/LoginViewController .swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "login()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B48861E4-3B54-47CE-BC15-901048E3A598 - 271ddafc7211d936"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hello_Chat_Application.LoginViewController.login() -&gt; ()"
+                  moduleName = "Hello Chat Application"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omkar/Desktop/Hello%20Chat%20Application/Hello%20Chat%20Application/Controllers/Auth%20Controllers/LoginViewController%20.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "85">
+               </Location>
+               <Location
+                  uuid = "B48861E4-3B54-47CE-BC15-901048E3A598 - 271ddafc7211d936"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hello_Chat_Application.LoginViewController.login() -&gt; ()"
+                  moduleName = "Hello Chat Application"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omkar/Desktop/Hello%20Chat%20Application/Hello%20Chat%20Application/Controllers/Auth%20Controllers/LoginViewController%20.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "157">
+               </Location>
+               <Location
+                  uuid = "B48861E4-3B54-47CE-BC15-901048E3A598 - 271ddafc7211d936"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hello_Chat_Application.LoginViewController.login() -&gt; ()"
+                  moduleName = "Hello Chat Application"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/omkar/Desktop/Hello%20Chat%20Application/Hello%20Chat%20Application/Controllers/Auth%20Controllers/LoginViewController%20.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "1318">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "23AF618B-2C62-4272-A4D6-036F30E980A7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hello Chat Application/App/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "scene(_:willConnectTo:options:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C525C5C-5AA2-488A-AC0F-EC554FE8F1AB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hello Chat Application/Controllers/Main Controllers/BaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "hideLoader()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
