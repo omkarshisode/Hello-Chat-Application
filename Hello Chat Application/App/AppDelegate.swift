@@ -23,14 +23,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Check if user is already loggedIn
         if UserDefaultsManager.userDefalutManager.isLoggedIn {
             // User is  logged in navigate to the Home screen
-            let homeViewController = HomeScreenController()
-            window?.rootViewController = UINavigationController(rootViewController: homeViewController)
+            setUpTabBar()
         } else {
             // If user is logged out then navigate to the login view
             let loginViewController = LoginViewController()
             window?.rootViewController = UINavigationController(rootViewController: loginViewController)
         }
         return true
+    }
+    
+    // Set up tab bar
+    func setUpTabBar() {
+        
+        let tabBarController = UITabBarController()
+        
+        let homeScreenViewContrller = HomeScreenController()
+        let groupChatsViewController = GroupChatsViewController()
+        let callsViewController = CallsViewController()
+        let profileViewController = ProfileViewController()
+        
+        homeScreenViewContrller.tabBarItem = UITabBarItem(title: "Chat", image: UIImage(systemName: "bubble.left"), tag: 0)
+        groupChatsViewController.tabBarItem = UITabBarItem(title: "Group", image: UIImage(systemName: "bubble.left.and.bubble.right"), tag: 1)
+        callsViewController.tabBarItem = UITabBarItem(title: "Calls", image: UIImage(systemName: "phone.fill"), tag: 2)
+        profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 3)
+        
+         let viewController = [
+            UINavigationController(rootViewController: homeScreenViewContrller),
+            UINavigationController(rootViewController: groupChatsViewController),
+            UINavigationController(rootViewController: callsViewController),
+            UINavigationController(rootViewController: profileViewController)
+        ]
+        
+        tabBarController.viewControllers = viewController
+        tabBarController.tabBar.isTranslucent = false
+        tabBarController.tabBar.barTintColor = .white // Background color
+        tabBarController.tabBar.tintColor = .systemBlue // Color of the selected item
+        tabBarController.tabBar.unselectedItemTintColor = .gray // Color of unselected items
+
+        window?.rootViewController = UINavigationController(rootViewController: tabBarController)
     }
 
     // MARK: UISceneSession Lifecycle

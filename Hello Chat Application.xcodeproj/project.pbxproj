@@ -39,6 +39,10 @@
 		B6E113702CB479790084D801 /* UserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1136F2CB479790084D801 /* UserInfoCell.swift */; };
 		B6E113722CB5020D0084D801 /* sunset.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B6E113712CB5020D0084D801 /* sunset.jpeg */; };
 		B6E113742CB5741B0084D801 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E113732CB5741B0084D801 /* UserInfo.swift */; };
+		B6E113762CB5C34C0084D801 /* GroupChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E113752CB5C34C0084D801 /* GroupChatsViewController.swift */; };
+		B6E113782CB5C39B0084D801 /* CallsViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E113772CB5C39B0084D801 /* CallsViewController .swift */; };
+		B6E1137A2CB5C3B90084D801 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E113792CB5C3B90084D801 /* SettingViewController.swift */; };
+		B6E1137C2CB5C3D60084D801 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E1137B2CB5C3D60084D801 /* ProfileViewController.swift */; };
 		B6E26AC52CB1C5DE00835172 /* UserDefalutManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E26AC42CB1C5DE00835172 /* UserDefalutManager .swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,10 @@
 		B6E1136F2CB479790084D801 /* UserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCell.swift; sourceTree = "<group>"; };
 		B6E113712CB5020D0084D801 /* sunset.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sunset.jpeg; path = ../../../../Downloads/sunset.jpeg; sourceTree = "<group>"; };
 		B6E113732CB5741B0084D801 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		B6E113752CB5C34C0084D801 /* GroupChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatsViewController.swift; sourceTree = "<group>"; };
+		B6E113772CB5C39B0084D801 /* CallsViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CallsViewController .swift"; sourceTree = "<group>"; };
+		B6E113792CB5C3B90084D801 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		B6E1137B2CB5C3D60084D801 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B6E26AC42CB1C5DE00835172 /* UserDefalutManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefalutManager .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +218,10 @@
 			children = (
 				B685116D2CAB40EE0063676A /* BaseViewController.swift */,
 				B68511AC2CAD51EC0063676A /* HomeScreenController.swift */,
+				B6E113752CB5C34C0084D801 /* GroupChatsViewController.swift */,
+				B6E113772CB5C39B0084D801 /* CallsViewController .swift */,
+				B6E113792CB5C3B90084D801 /* SettingViewController.swift */,
+				B6E1137B2CB5C3D60084D801 /* ProfileViewController.swift */,
 			);
 			path = "Main Controllers";
 			sourceTree = "<group>";
@@ -459,11 +471,14 @@
 			files = (
 				B685116E2CAB40EE0063676A /* BaseViewController.swift in Sources */,
 				B68511742CAB40EE0063676A /* Hello_Chat_Application.xcdatamodeld in Sources */,
+				B6E113762CB5C34C0084D801 /* GroupChatsViewController.swift in Sources */,
 				B68511B02CADAC950063676A /* Extenstions.swift in Sources */,
 				B68511AD2CAD51EC0063676A /* HomeScreenController.swift in Sources */,
+				B6E1137A2CB5C3B90084D801 /* SettingViewController.swift in Sources */,
 				B6D434852CB12423004E4316 /* SignUpDelegate.swift in Sources */,
 				B68511B22CADB8A80063676A /* User.swift in Sources */,
 				B685116A2CAB40EE0063676A /* AppDelegate.swift in Sources */,
+				B6E1137C2CB5C3D60084D801 /* ProfileViewController.swift in Sources */,
 				B68511CC2CAF2EEB0063676A /* SignUpViewController .swift in Sources */,
 				B6E113702CB479790084D801 /* UserInfoCell.swift in Sources */,
 				B685116C2CAB40EE0063676A /* SceneDelegate.swift in Sources */,
@@ -471,6 +486,7 @@
 				B685119F2CAC7DA60063676A /* LoginViewController .swift in Sources */,
 				B6E26AC52CB1C5DE00835172 /* UserDefalutManager .swift in Sources */,
 				B6E113742CB5741B0084D801 /* UserInfo.swift in Sources */,
+				B6E113782CB5C39B0084D801 /* CallsViewController .swift in Sources */,
 				B6D434892CB19D10004E4316 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

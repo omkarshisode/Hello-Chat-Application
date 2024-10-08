@@ -42,6 +42,7 @@ class HomeScreenController: BaseViewController, UITableViewDelegate, UITableView
         // Set up constraint of all child view inside of home screen
         setUpTableView()
         setUpConstraintLayout()
+    
     }
     
     func setUpTableView() {

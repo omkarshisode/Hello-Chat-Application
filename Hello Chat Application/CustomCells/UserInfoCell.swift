@@ -59,6 +59,17 @@ class UserInfoCell: UITableViewCell {
         return count
     }()
     
+    // Is online label
+    let isOnlineLabel:UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .green
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+//        label.isHidden = true
+        label.layer.cornerRadius = 7
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpView()
@@ -70,11 +81,13 @@ class UserInfoCell: UITableViewCell {
     
     // Set up the view and constraints
     func setUpView() {
+        // Add child views to UserInfoCell
         contentView.addSubview(profileImage)
         contentView.addSubview(name)
         contentView.addSubview(lastSeen)
         contentView.addSubview(lastMessage)
         contentView.addSubview(newMessageCount)
+        contentView.addSubview(isOnlineLabel)
         
         // Set up constraints for profile image and user name
         NSLayoutConstraint.activate([
@@ -104,7 +117,13 @@ class UserInfoCell: UITableViewCell {
             newMessageCount.topAnchor.constraint(equalTo: lastSeen.bottomAnchor, constant: 8),
             newMessageCount.leadingAnchor.constraint(equalTo: lastSeen.leadingAnchor, constant: 10),
             newMessageCount.widthAnchor.constraint(equalToConstant: 20),
-            newMessageCount.heightAnchor.constraint(equalToConstant: 20)
+            newMessageCount.heightAnchor.constraint(equalToConstant: 20),
+            
+            // Is online label constaints
+            isOnlineLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 44),
+            isOnlineLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 55),
+            isOnlineLabel.widthAnchor.constraint(equalToConstant: 14),
+            isOnlineLabel.heightAnchor.constraint(equalToConstant: 14)
             
         ])
     }
@@ -117,6 +136,7 @@ class UserInfoCell: UITableViewCell {
         lastMessage.text = userInfo.lastMessage
         lastSeen.text = userInfo.lastMessageTime
         
+        // Check message is more than one for single user
         if(userInfo.newMessageCount > 0){
             newMessageCount.text = "\(userInfo.newMessageCount)"
             newMessageCount.isHidden = false
