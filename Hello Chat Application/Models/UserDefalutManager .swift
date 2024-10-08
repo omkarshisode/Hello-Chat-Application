@@ -25,7 +25,8 @@ class UserDefaultsManager {
     // getter setter for isLoggedIn from userDefaults
     var isLoggedIn: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: UserDefaultsKey.isLoggedIn.rawValue)
+            return true 
+//            return UserDefaults.standard.bool(forKey: UserDefaultsKey.isLoggedIn.rawValue)
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: UserDefaultsKey.isLoggedIn.rawValue)

@@ -40,7 +40,7 @@ class UserInfoCell: UITableViewCell {
     // Last seen label
     let lastMessage:UILabel = {
         let lsLabel = UILabel()
-        lsLabel.font = UIFont.systemFont(ofSize: 11, weight: .light)
+        lsLabel.font = UIFont.systemFont(ofSize: 12, weight: .light)
         lsLabel.translatesAutoresizingMaskIntoConstraints = false
         return lsLabel
     }()
@@ -48,8 +48,8 @@ class UserInfoCell: UITableViewCell {
     // New message count
     let newMessageCount:UILabel = {
         let count = UILabel()
-        count.font = UIFont.systemFont(ofSize: 12)
-        count.textColor = .white
+        count.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        count.textColor = .black
         count.translatesAutoresizingMaskIntoConstraints = false
         count.textAlignment = .center
         count.layer.cornerRadius = 10
@@ -58,7 +58,7 @@ class UserInfoCell: UITableViewCell {
         count.backgroundColor = .green
         return count
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpView()
@@ -78,6 +78,7 @@ class UserInfoCell: UITableViewCell {
         
         // Set up constraints for profile image and user name
         NSLayoutConstraint.activate([
+            
             // Profile image constraints
             profileImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             profileImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -86,32 +87,31 @@ class UserInfoCell: UITableViewCell {
             
             // User name label constraints
             name.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 30),
-            name.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            name.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             name.trailingAnchor.constraint(equalTo: lastSeen.leadingAnchor, constant: -5),
             
             // User Last name constraint
             lastSeen.leadingAnchor.constraint(equalTo: name.trailingAnchor),
-            lastSeen.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            lastSeen.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             lastSeen.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant:-16),
             
             // User last message
             lastMessage.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 5),
-            lastMessage.trailingAnchor.constraint(equalTo: profileImage.leadingAnchor),
-            lastMessage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            lastMessage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            lastMessage.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 30),
             
             // New Messages Count Label Constraints
-            newMessageCount.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            newMessageCount.topAnchor.constraint(equalTo: lastSeen.bottomAnchor, constant: 4),
-            newMessageCount.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            newMessageCount.heightAnchor.constraint(equalToConstant: 10),
-            newMessageCount.widthAnchor.constraint(equalToConstant: 10)
-
+            newMessageCount.topAnchor.constraint(equalTo: lastSeen.bottomAnchor, constant: 8),
+            newMessageCount.leadingAnchor.constraint(equalTo: lastSeen.leadingAnchor, constant: 10),
+            newMessageCount.widthAnchor.constraint(equalToConstant: 20),
+            newMessageCount.heightAnchor.constraint(equalToConstant: 20)
             
         ])
     }
     
     // Configure the cell properties
     func configure(with userInfo:UserInfo){
+        
         profileImage.image = userInfo.profileImage
         name.text = userInfo.name
         lastMessage.text = userInfo.lastMessage
@@ -124,7 +124,6 @@ class UserInfoCell: UITableViewCell {
         } else {
             newMessageCount.isHidden = true
         }
-        
         
     }
 }

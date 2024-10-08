@@ -11,7 +11,7 @@ class User {
     var firstName:String?
     var lastName:String?
     var email:String?
-    var isLoggedIn:Bool = false
+    var isLoggedIn:Bool = false 
     var isOnline:Bool = false
     var profileImageURL:String?
 }

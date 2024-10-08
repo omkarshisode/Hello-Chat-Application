@@ -51,7 +51,7 @@ class HomeScreenController: BaseViewController, UITableViewDelegate, UITableView
         self.tableView.delegate = self
         self.tableView.dataSource = self
         // Set the row height
-        self.tableView.rowHeight = 80 // Adjust this value as needed
+        self.tableView.rowHeight = 75
     }
     
     // Implement the table view property
@@ -88,6 +88,16 @@ class HomeScreenController: BaseViewController, UITableViewDelegate, UITableView
         titleLabel.textColor = .black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 30)
         self.navigationItem.titleView = titleLabel
+        
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.shadowImage = UIImage()
+        appearance.shadowColor = .gray
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
 }
