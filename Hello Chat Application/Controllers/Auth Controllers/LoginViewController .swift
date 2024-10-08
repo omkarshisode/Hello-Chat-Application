@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
-class LoginViewController: UIViewController, SignUpDelegate {
+class LoginViewController: BaseViewController, SignUpDelegate {
     
     let emailAdress:UITextField = {
         let textField = UITextField()
@@ -100,56 +101,80 @@ class LoginViewController: UIViewController, SignUpDelegate {
         navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
-    
+    // Login user into the system
     @objc func login(){
+        
+        // These field are empty or not
         guard let email = emailAdress.text, !email.isEmpty,
               let password = password.text, !password.isEmpty else {
             showAlert(title: "Input Empty", message: "Please Enter credentials")
             return
         }
         
-        if email == "omkarshisode7@gmail.com" && password == "Omkar_123" {
-            showAlert(title: "Sucess", message: "You are successfully logged In !!")
-            let homeScreen = HomeScreenController()
-            navigationController?.pushViewController(homeScreen, animated: true)
-           
+        // Show loader till you not get the callback from the firebase
+        showLoader()
+        
+        // Login to the app via firebase authentication
+        Auth.auth().signIn(withEmail: email, password: password) {[weak self] authResult, error in
+            guard let strongSelf = self else {return}
+            
+            // Stop loader
+            strongSelf.hideLoader()
+            
+            // Check if error or not
+            if let error = error {
+                strongSelf.showAlert(title: "Login failed!!", message: error.localizedDescription)
+                return
+            }
+            
+            // If Success full logini
+            UserDefaultsManager.userDefalutManager.isLoggedIn = true // set user logged to true
+            let homeScreeViewController = HomeScreenController()
+            if var viewController = strongSelf.navigationController?.viewControllers {
+                // Remove all the activity from stack after success full login
+                viewController.removeLast()
+                // Append the Home screen only
+                viewController.append(homeScreeViewController)
+                // Set new navigation controller with new viewController value
+                strongSelf.navigationController?.setViewControllers(viewController, animated: true)
+            }
         }
     }
+    
+    
+    func setUpConstrainLayout() {
         
-        
-        func setUpConstrainLayout() {
+        NSLayoutConstraint.activate([
             
-            NSLayoutConstraint.activate([
+            // Email text field constrain
+            emailAdress.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailAdress.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 200),
+            emailAdress.widthAnchor.constraint(equalToConstant: 300),
+            emailAdress.heightAnchor.constraint(equalToConstant: 40),
+            
+            // Password text field constraint
+            password.centerXAnchor.constraint(equalTo:view.centerXAnchor),
+            password.topAnchor.constraint(equalTo: emailAdress.bottomAnchor, constant: 20),
+            password.widthAnchor.constraint(equalToConstant: 300),
+            password.heightAnchor.constraint(equalToConstant: 40),
+            
+            
+            // Login button constraint
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 30),
+            loginButton.widthAnchor.constraint(equalToConstant: 200),
+            loginButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            // SignUp text contraint
+            signUpLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signUpLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            signUpLabel.widthAnchor.constraint(equalToConstant: 300),
+            signUpLabel.heightAnchor.constraint(equalToConstant: 40),
+            
+            
+        ])
+    }
+    
+}
 
-                // Email text field constrain
-                emailAdress.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                emailAdress.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 200),
-                emailAdress.widthAnchor.constraint(equalToConstant: 300),
-                emailAdress.heightAnchor.constraint(equalToConstant: 40),
-                
-                // Password text field constraint
-                password.centerXAnchor.constraint(equalTo:view.centerXAnchor),
-                password.topAnchor.constraint(equalTo: emailAdress.bottomAnchor, constant: 20),
-                password.widthAnchor.constraint(equalToConstant: 300),
-                password.heightAnchor.constraint(equalToConstant: 40),
-                
-                
-                // Login button constraint
-                loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                loginButton.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 30),
-                loginButton.widthAnchor.constraint(equalToConstant: 200),
-                loginButton.heightAnchor.constraint(equalToConstant: 40),
-                
-                // SignUp text contraint
-                signUpLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                signUpLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-                signUpLabel.widthAnchor.constraint(equalToConstant: 300),
-                signUpLabel.heightAnchor.constraint(equalToConstant: 40),
-                
-            
-            ])
-        }
-        
-    }
-    
-    
+

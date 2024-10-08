@@ -14,11 +14,22 @@ import FirebaseAuth
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Firebase initialization
         FirebaseApp.configure()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        // Check if user is already loggedIn
+        if UserDefaultsManager.userDefalutManager.isLoggedIn {
+            // User is  logged in navigate to the Home screen
+            let homeViewController = HomeScreenController()
+            window?.rootViewController = UINavigationController(rootViewController: homeViewController)
+        } else {
+            // If user is logged out then navigate to the login view
+            let loginViewController = LoginViewController()
+            window?.rootViewController = UINavigationController(rootViewController: loginViewController)
+        }
         return true
     }
 

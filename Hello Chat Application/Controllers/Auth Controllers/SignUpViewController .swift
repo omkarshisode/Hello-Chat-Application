@@ -8,7 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 
-class SignUpViewController : UIViewController {
+class SignUpViewController : BaseViewController {
     
     weak var signUpDelegate:SignUpDelegate?
     
@@ -22,7 +22,7 @@ class SignUpViewController : UIViewController {
         textField.layer.cornerRadius = 8
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isUserInteractionEnabled = true
-        
+        
         return textField
     }()
     
@@ -62,6 +62,7 @@ class SignUpViewController : UIViewController {
         textField.isSecureTextEntry = true
         textField.layer.cornerRadius = 8
         textField.translatesAutoresizingMaskIntoConstraints = false
+        
         return textField
     }()
     
@@ -94,37 +95,48 @@ class SignUpViewController : UIViewController {
     
     @objc func signUp(){
         
-            guard let firstNameText = firstName.text, !firstNameText.isEmpty,
-                  let lastNameText = firstName.text, !lastNameText.isEmpty,
-                  let emailText = email.text, !emailText.isEmpty,
-                  let passwordText = password.text, !passwordText.isEmpty else {
-                showAlert(title: "Warning!!", message: "Please Enter all field!!")
+        // Check all the field all filled or not
+        guard let firstNameText = firstName.text, !firstNameText.isEmpty,
+              let lastNameText = lastName.text, !lastNameText.isEmpty,
+              let emailText = email.text, !emailText.isEmpty,
+              let passwordText = password.text, !passwordText.isEmpty else {
+            showAlert(title: "Warning!!", message: "Please Enter all field!!")
+            return
+        }
+        
+        // Enable loader
+        showLoader()
+        // Create new user on firebase with email and password
+        Auth.auth().createUser(withEmail:emailText , password: passwordText) {
+            authResult, error in
+            
+            // Stop loader
+            self.hideLoader()
+            // On user creation failed show pop up with message
+            if let error = error {
+                self.showAlert(title: "Failed",
+                        message: "Failed to create User: \(error.localizedDescription)")
                 return
             }
             
-            Auth.auth().createUser(withEmail:emailText , password: passwordText) {
-                authResult, error in
-                
-                if let error = error {
-                    self.showAlert(title: "Failed",
-                                   message: "Failed to create User: \(error.localizedDescription)")
-                    return
-                }
-                
-                let user = User()
-                user.firstName = firstNameText
-                user.lastName = lastNameText
-                user.email = emailText
-                user.isOnline = true
-                user.isLoggedIn = true
-                user.profileImageURL = " "
-                self.signUpDelegate?.didCreatedUser(user: user)
-                // If successFully created
-                self.dismiss(animated: true, completion: nil)
-            }
-        
-    }   
 
+            // On successful login create a user object
+            let user = User()
+            user.firstName = firstNameText
+            user.lastName = lastNameText
+            user.email = emailText
+            user.isOnline = true
+            user.isLoggedIn = true
+            user.profileImageURL = " "
+            
+            // Send user data via delegate to another controller
+            self.signUpDelegate?.didCreatedUser(user: user)
+            // If successFully created dismiss the sign Up view controller
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
     
     
     func setUpLayoutContraint(){
@@ -135,7 +147,7 @@ class SignUpViewController : UIViewController {
             firstName.widthAnchor.constraint(equalToConstant: 300),
             firstName.heightAnchor.constraint(equalToConstant: 40),
             
-            // last name constaint
+            // Last name constaint
             lastName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             lastName.topAnchor.constraint(equalTo: firstName.topAnchor, constant: 60),
             lastName.widthAnchor.constraint(equalToConstant: 300),
